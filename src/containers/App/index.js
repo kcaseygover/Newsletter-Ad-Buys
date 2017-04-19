@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 import Publisher from '../../components/Publisher.js';
 import DateAdded from '../../components/DateAdded.js';
 import PublishDate from '../../components/PublishDate.js';
+import Publication from '../../components/Publication.js';
+import Cost from '../../components/Cost.js';
+import Reach from '../../components/Reach.js';
+import Sponsorship from '../../components/Sponsorship.js';
+
 
 export default class App extends Component {
   render() {
@@ -13,6 +18,10 @@ export default class App extends Component {
         <DateAdded />
         <PublishDate />
         <Publisher />
+        <Publication />
+        <Sponsorship />
+        <Reach />
+        <Cost />
       </div>
     );
   };
