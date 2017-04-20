@@ -1,5 +1,5 @@
 import React from 'react';
-
+//this should probably be called onsubmit of form....
 let today = new Date();
 
 const DateAdded = () => (

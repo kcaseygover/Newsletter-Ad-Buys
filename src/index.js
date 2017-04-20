@@ -1,20 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
-
-
-// import { Provider } from 'react-redux';
-// import { createStore } from 'redux';
-
-//should be importing reducers here......and the app container. ex:
-//import todoApp from './reducers' && import App from './components/App'
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
 import App from './containers/App/index.js';
+import appReducer from './reducers';
 
-// let store = createStore(reducers)
+const store = createStore(appReducer)
 
 render(
-  // <Provider store={store}>
-    <App />,
-  // </Provider>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('app')
 )
