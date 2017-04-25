@@ -6,6 +6,7 @@ const PublishDate = () => (
     <input
       type="date"
       name="publishDate"
+      value="publishDate"
       onChange={(e) => onChangePublishDate(e.target.value)}
     />
   </div>

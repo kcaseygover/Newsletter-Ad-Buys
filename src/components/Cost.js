@@ -11,7 +11,7 @@ console.log('in Cost:', cost, 'onChange:', onChangeCost)
       <input
         type="text"
         name="cost"
-        onChange={(e) => onChangeCost(e.target.value)}
+        onChange={onChangeCost}
         value={cost}
         required/>
     </div>
@@ -19,7 +19,7 @@ console.log('in Cost:', cost, 'onChange:', onChangeCost)
 }
 
 // Cost.propTypes = {
-//   cost: PropTypes.number,
+//   cost: PropTypes.string,
 //   onChangeCost: PropTypes.func,
 // };
 

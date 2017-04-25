@@ -11,15 +11,14 @@ import Publication from '../components/Publication.js';
 import Cost from '../components/Cost.js';
 import Reach from '../components/Reach.js';
 import Sponsorship from '../components/Sponsorship.js';
-import FruitSelector from '../../Fruit.js';
-
 
 class NewsletterForm extends React.PureComponent {
   static propTypes = {
-   onChangeCost: PropTypes.func,
-   cost: PropTypes.string,
-   dispatch: PropTypes.func,
-   onChangePublisher: PropTypes.func,
+    dispatch: PropTypes.func,
+    onChangeCost: PropTypes.func,
+    onChangePublisher: PropTypes.func,
+    cost: PropTypes.string,
+    publisher: PropTypes.string,
   };
 
 
@@ -31,23 +30,22 @@ class NewsletterForm extends React.PureComponent {
   render() {
 // console.log(store.getState());
   console.log('this.props in form container?', this.props);
+const { newCost } = this.props;
 
     return (
       <form>
         <h1>Newsletter Ads Buy Tracking Form</h1>
         <Publisher
-          onChangePublisher={this.props.onChangePublisher}
+
         />
         <Publication/>
         <Sponsorship />
         <Reach/>
         <Cost
-          onChangeCost={this.props.cost}
+          onChangeCost={newCost}
         />
         <PublishDate/>
         <DateAdded />
-        <FruitSelector name="World" />
-
         <input type="submit" value="Submit" />
       </form>
     )
@@ -63,9 +61,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChangeCost: (cost) => dispatch(changeCost(cost)),
+    newCost: (cost) => dispatch(changeCost(cost)),
     onChangePublisher: (publisher) => dispatch(changePublisher(publisher)),
-    dispatch,
   }
 };
 

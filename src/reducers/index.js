@@ -1,4 +1,4 @@
-import { CHANGE_PUBLISHER, CHANGE_COST, ADD_AD_BUY, changeCost } from '../actions/index.js';
+import { CHANGE_PUBLISHER, CHANGE_COST, ADD_AD_BUY } from '../actions/index.js';
 
 const initialState = {
   publisher: '',
@@ -15,10 +15,10 @@ function appReducer(state = initialState, action) {
         publisher: action.publisher
       }
     case CHANGE_COST:
-      return {
-        ...state,
+      return Object.assign({}, state, {
         cost: action.cost
-      }
+      })
+
     case ADD_AD_BUY:
       return {
         ...state,
