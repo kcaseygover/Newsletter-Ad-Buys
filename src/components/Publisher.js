@@ -3,19 +3,21 @@ import PropTypes from 'prop-types';
 import data from '../../data';
 
 const Publisher = (props) => {
-  // const { onChangePublisher } = props;
+  const { onChangePublisher } = props;
 
-console.log('publisher props: ', props)
+  console.log('publisher props: ', props)
 
-const publishers = data.Publishers;
-const keys = Object.keys(publishers);
+  const publishers = data.Publishers;
+  const keys = Object.keys(publishers);
 
-const mappedPublishers = keys.map(publisher => <option>{publisher}</option>)
+  const mappedPublishers = keys.map(publisher => <option>{publisher}</option>)
 
   return (
     <div>
       <label htmlFor="publisher">Publisher: </label>
-      <select name="publisher"
+      <select
+
+        name="publisher"
         onChange={(e) => onChangePublisher(e.target.value)}>
         <option defaultValue >Select...</option>
         {mappedPublishers}
@@ -25,7 +27,7 @@ const mappedPublishers = keys.map(publisher => <option>{publisher}</option>)
 }
 
 Publisher.propTypes = {
-  // onChangePublisher: PropTypes.func.isRequired,
+  onChangePublisher: PropTypes.func,
 }
 
 export default Publisher;

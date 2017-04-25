@@ -1,16 +1,25 @@
 const CHANGE_PUBLISHER = 'CHANGE_PUBLISHER';
 const ADD_AD_BUY = 'ADD_AD_BUY';
+const CHANGE_COST = 'CHANGE_COST';
+
 
 export function changePublisher(publisher) {
   return {
     type: CHANGE_PUBLISHER,
-    publisher,
+    payload: publisher,
   }
 }
 
-export function addAdBuy(ad) {
+export function addAdBuy() {
   return {
     type: ADD_AD_BUY,
-    ad,
+
+  }
+}
+
+export function changeCost(cost) {
+  return {
+    type: CHANGE_COST,
+    cost,
   }
 }

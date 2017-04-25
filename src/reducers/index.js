@@ -1,16 +1,29 @@
-import { CHANGE_PUBLISHER, ADD_AD_BUY } from '../actions/index.js';
+import { CHANGE_PUBLISHER, CHANGE_COST, ADD_AD_BUY, changeCost } from '../actions/index.js';
 
 const initialState = {
-  ad: { publisher: '' },
+  publisher: '',
+  cost: '',
 };
 
+
 function appReducer(state = initialState, action) {
-  console.log(state);
+  console.log('state in reducers: ', state);
   switch (action.type) {
     case CHANGE_PUBLISHER:
-      return {publisher: action.publisher}
+      return {
+        ...state,
+        publisher: action.publisher
+      }
+    case CHANGE_COST:
+      return {
+        ...state,
+        cost: action.cost
+      }
     case ADD_AD_BUY:
-      return {ad: action.ad}
+      return {
+        ...state,
+        ad: action.ad
+      }
     default:
       return state;
   }
