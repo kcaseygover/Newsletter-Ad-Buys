@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import data from '../../data';
 
-const Publisher = (props) => {
-  const { onChangePublisher, publisher } = props;
-
-  console.log('publisher props: ', props)
+const Publisher = ({ onChange, publisher }) => {
+  console.log('in publisher; publisher: ', publisher, 'onChange', onChange)
 
   const publishers = data.Publishers;
   const keys = Object.keys(publishers);
@@ -16,18 +14,12 @@ const Publisher = (props) => {
       <label htmlFor="publisher">Publisher: </label>
       <select
         name="publisher"
-        value={publisher}
-        onChange={(e) => onChangePublisher(e.target.value)}>
+        onChange={onChange}>
         <option defaultValue >Select...</option>
         {mappedPublishers}
       </select>
     </div>
   )
-}
-
-Publisher.propTypes = {
-  onChangePublisher: PropTypes.func,
-  publisher: PropTypes.string,
 }
 
 export default Publisher;

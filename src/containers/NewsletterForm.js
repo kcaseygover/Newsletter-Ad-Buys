@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 
-import { addAdBuy, changeCost, changePublisher } from '../actions/index.js'
+import {
+  addAdBuy,
+  changeCost,
+  changePublisher,
+  changePublication,
+  changeSponsorship,
+  changePublishDate,
+} from '../actions/index.js'
 
 import Publisher from '../components/Publisher.js';
 import DateAdded from '../components/DateAdded.js';
@@ -13,38 +20,85 @@ import Reach from '../components/Reach.js';
 import Sponsorship from '../components/Sponsorship.js';
 
 class NewsletterForm extends React.PureComponent {
-  static propTypes = {
-    dispatch: PropTypes.func,
-    onChangeCost: PropTypes.func,
-    onChangePublisher: PropTypes.func,
-    cost: PropTypes.string,
-    publisher: PropTypes.string,
-  };
-
-
-    // onSubmit={e => {
-    //     e.preventDefault()
-    //     dispatch(addAdBuy(input.value))
-    //   }
+  // static propTypes = {
+  //   dispatch: PropTypes.func,
+  //   onChangeCost: PropTypes.func,
+  //   onChangePublisher: PropTypes.func,
+  //   onChangePublishDate: PropTypes.func,
+  //   cost: PropTypes.string,
+  //   publisher: PropTypes.string,
+  // };
 
   render() {
 // console.log(store.getState());
-  console.log('this.props in form container?', this.props);
-const { newCost } = this.props;
+    console.log('this.props.cost in form container?', this.props.cost, this.props);
+
+    const {
+      onChangeCost,
+      onChangePublisher,
+      onChangePublication,
+      onChangeSponsorship,
+      onChangePublishDate,
+      cost,
+      publisher,
+      publication,
+      publishDate,
+      sponsorship,
+      dispatch
+    } = this.props;
+
+let input;
 
     return (
-      <form>
+      <form onSubmit={e => {
+              e.preventDefault()
+              dispatch(addAdBuy())
+              console.log("test submit: ", e.target.value)
+
+
+            }}>
         <h1>Newsletter Ads Buy Tracking Form</h1>
         <Publisher
-
+          publisher={this.props.publisher}
+          onChange={(e) => {
+            e.preventDefault()
+            onChangePublisher(e.target.value)
+            console.log("test select: ", e.target.value)
+          }}
         />
-        <Publication/>
-        <Sponsorship />
+        <Publication
+          publication={this.props.publication}
+          onChange={(e) => {
+            e.preventDefault()
+            onChangePublication(e.target.value)
+            console.log("test select: ", e.target.value)
+          }}
+        />
+        <Sponsorship
+          sponsorship={this.props.sponsorship}
+            onChange={(e) => {
+              e.preventDefault()
+              onChangeSponsorship(e.target.value)
+              console.log("test select: ", e.target.value)
+            }}
+        />
         <Reach/>
         <Cost
-          onChangeCost={newCost}
+          cost={this.props.cost}
+          onChange={(e) => {
+            e.preventDefault()
+            onChangeCost(e.target.value)
+            console.log("test input: ", e.target.value)
+          }}
         />
-        <PublishDate/>
+        <PublishDate
+          publishDate={this.props.publishDate}
+          onChange={(e) => {
+            e.preventDefault()
+            onChangePublishDate(e.target.value)
+            console.log("test input: ", e.target.value)
+          }}
+        />
         <DateAdded />
         <input type="submit" value="Submit" />
       </form>
@@ -57,15 +111,20 @@ const { newCost } = this.props;
 const mapStateToProps = (state) => ({
   cost: state.cost,
   publisher: state.publisher,
+  publication: state.publication,
+  sponsorship: state.sponsorship,
+  publishDate: state.publishDate,
 })
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    newCost: (cost) => dispatch(changeCost(cost)),
+    onChangeCost: (cost) => dispatch(changeCost(cost)),
     onChangePublisher: (publisher) => dispatch(changePublisher(publisher)),
+    onChangePublication: (publication) => dispatch(changePublication(publication)),
+    onChangeSponsorship: (sponsorship) => dispatch(changeSponsorship(sponsorship)),
+    onChangePublishDate: (publishDate) => dispatch(changePublishDate(publishDate)),
+    dispatch,
   }
 };
 
-
-// export default NewsletterForm;
 export default connect(mapStateToProps, mapDispatchToProps)(NewsletterForm);

@@ -1,15 +1,17 @@
 import React from 'react';
 
-const PublishDate = () => (
-  <div>
-    <label htmlFor="publishDate">Date Published: </label>
-    <input
-      type="date"
-      name="publishDate"
-      value="publishDate"
-      onChange={(e) => onChangePublishDate(e.target.value)}
-    />
-  </div>
-)
+const PublishDate = ({ onChange }) => {
+  console.log('in date  ', onChange)
+  return (
+    <div>
+      <label htmlFor="publishDate">Date Published: </label>
+      <input
+        type="date"
+        name="publishDate"
+        onChange={onChange}
+      />
+    </div>
+  )
+}
 
 export default PublishDate;
