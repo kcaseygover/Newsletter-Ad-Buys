@@ -1,10 +1,20 @@
-import { createStore } from 'redux';
-import  appReducer from './reducers';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+
+import appReducer from './reducers';
+import mySaga from './sagas';
+
 import { changeCost } from './actions/index.js';
 
-const store = createStore(appReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  appReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(sagaMiddleware)
 );
+
+sagaMiddleware.run(mySaga)
 // Log the initial state
 console.log('log initial state, in store.js:',store.getState())
 
