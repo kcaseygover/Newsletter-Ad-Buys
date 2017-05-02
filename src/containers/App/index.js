@@ -9,9 +9,8 @@ import {
 
 import store from '../../store';
 import NewsletterForm from '../../containers/NewsletterForm.js';
-import Fruit from '../../../Fruit.js';
+import AdBuysTable from '../../containers/AdBuysTable.js';
 
-// @connect()
 export default class App extends Component {
 
   render() {
@@ -24,10 +23,10 @@ export default class App extends Component {
         <div>
           <ul>
             <li><Link to="/">Newsletter Form</Link></li>
-            <li><Link to="/fruit">Fruit</Link></li>
+            <li><Link to="/table">Ad Buys Table</Link></li>
           </ul>
           <Route exact path="/" component={NewsletterForm} />
-          <Route path="/fruit" component={Fruit}/>
+          <Route path="/table" component={AdBuysTable}/>
         </div>
       </Router>
     );

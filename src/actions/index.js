@@ -1,5 +1,5 @@
 const CHANGE_PUBLISHER = 'CHANGE_PUBLISHER';
-const ADD_AD_BUY = 'ADD_AD_BUY';
+const SAVE_AD_BUY = 'SAVE_AD_BUY';
 const CHANGE_COST = 'CHANGE_COST';
 const CHANGE_PUBLICATION = 'CHANGE_PUBLICATION';
 const CHANGE_SPONSORSHIP = 'CHANGE_SPONSORSHIP';
@@ -12,9 +12,9 @@ export function changePublisher(publisher) {
   }
 }
 
-export function addAdBuy() {
+export function saveAdBuy() {
   return {
-    type: ADD_AD_BUY,
+    type: SAVE_AD_BUY,
 
   }
 }

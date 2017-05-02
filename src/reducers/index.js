@@ -4,17 +4,16 @@ import {
   CHANGE_SPONSORSHIP,
   CHANGE_PUBLISH_DATE,
   CHANGE_COST,
-  ADD_AD_BUY
+  SAVE_AD_BUY
 } from '../actions/index.js';
 
-const initialState = {
+const initialState = [{
   publisher: 'publisher',
   publication: '',
   sponsorship: '',
   publishDate: '',
   cost: '5.00',
-  ad: '',
-};
+}];
 
 
 function appReducer(state = initialState, action) {
@@ -42,14 +41,21 @@ function appReducer(state = initialState, action) {
       }
     case CHANGE_COST:
       return Object.assign({}, state, {
-        cost: action.cost
+        'cost': action.cost
       })
 
-    case ADD_AD_BUY:
-      return {
-        ...state,
-        ad: action.ad
-      }
+    case SAVE_AD_BUY:
+      return [
+        {
+          publisher: action.publisher,
+          publication: action.publication,
+          sponsorship: action.sponsorship,
+          publishDate: action.publishDate,
+          cost: action.cost,
+        },
+        ...state
+      ];
+
     default:
       return state;
   }

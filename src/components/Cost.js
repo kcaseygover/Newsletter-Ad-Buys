@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Cost = ({ onChange, cost }) => {
-  // const { onChangeCost } = props;
-console.log('in Cost:', cost, 'onChange:', onChange)
+const Cost = ({ onChange }) => {
+
+console.log('in Cost onChange:', onChange)
 
   return (
     <div>

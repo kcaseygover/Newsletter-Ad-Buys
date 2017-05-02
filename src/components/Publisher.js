@@ -5,9 +5,7 @@ import data from '../../data';
 const Publisher = ({ onChange, publisher }) => {
   console.log('in publisher; publisher: ', publisher, 'onChange', onChange)
 
-  const publishers = data.Publishers;
-  const keys = Object.keys(publishers);
-  const mappedPublishers = keys.map(publisher => <option key={publisher.toString()}>{publisher}</option>)
+  const publishers = Object.keys(data.Publishers);
 
   return (
     <div>
@@ -16,7 +14,9 @@ const Publisher = ({ onChange, publisher }) => {
         name="publisher"
         onChange={onChange}>
         <option defaultValue >Select...</option>
-        {mappedPublishers}
+        {publishers.map(publisher =>
+          <option key={publisher.toString()}>{publisher}</option>
+        )}
       </select>
     </div>
   )

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
+import store from '../store';
 
 import {
-  addAdBuy,
+  saveAdBuy,
   changeCost,
   changePublisher,
   changePublication,
@@ -32,7 +33,9 @@ class NewsletterForm extends React.PureComponent {
   render() {
 // console.log(store.getState());
     console.log('this.props.cost in form container?', this.props.cost, this.props);
-
+    store.subscribe(() => {
+      console.log('get state in newsletter form container', store.getState());
+    });
     const {
       onChangeCost,
       onChangePublisher,
@@ -52,7 +55,7 @@ let input;
     return (
       <form onSubmit={e => {
               e.preventDefault()
-              dispatch(addAdBuy())
+              dispatch(saveAdBuy())
               console.log("test submit: ", e.target.value)
 
 
@@ -84,9 +87,7 @@ let input;
         />
         <Reach/>
         <Cost
-          cost={this.props.cost}
           onChange={(e) => {
-            e.preventDefault()
             onChangeCost(e.target.value)
             console.log("test input: ", e.target.value)
           }}
