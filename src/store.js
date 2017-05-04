@@ -14,13 +14,17 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(mySaga)
+sagaMiddleware.run(mySaga);
+
+const action = type => store.dispatch({type});
+
 // Log the initial state
 console.log('log initial state, in store.js:',store.getState())
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 const unsubscribe = store.subscribe(() =>
+
   console.log('in store.js, state change? ', store.getState())
 )
 
