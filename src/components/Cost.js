@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Cost = ({ onChange }) => {
+const Cost = (props) => {
 
-console.log('in Cost onChange:', onChange)
+console.log('in Cost onChangeCost:', props.cost, props.onChangeCost)
 
   return (
     <div>
@@ -10,10 +11,15 @@ console.log('in Cost onChange:', onChange)
       <input
         type="text"
         name="cost"
-        onChange={onChange}
+        onChange={props.onChangeCost}
       />
     </div>
   )
+}
+
+Cost.propTypes = {
+  onChangeCost: PropTypes.func.isRequired,
+  cost: PropTypes.string,
 }
 
 export default Cost;

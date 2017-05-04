@@ -32,7 +32,8 @@ class NewsletterForm extends React.PureComponent {
 
   render() {
 // console.log(store.getState());
-    console.log('this.props.cost in form container?', this.props.cost, this.props);
+// console.log("test input: ", e.target.value)
+    console.log('this.props in Newsletterform?', this.props.cost, this.props.onChangeCost);
     store.subscribe(() => {
       console.log('get state in newsletter form container', store.getState());
     });
@@ -45,7 +46,6 @@ class NewsletterForm extends React.PureComponent {
       cost,
       publisher,
       publication,
-      publishDate,
       sponsorship,
       dispatch
     } = this.props;
@@ -56,49 +56,29 @@ let input;
       <form onSubmit={e => {
               e.preventDefault()
               dispatch(saveAdBuy())
-              console.log("test submit: ", e.target.value)
-
+              console.log("test submit: ")
 
             }}>
         <h1>Newsletter Ads Buy Tracking Form</h1>
         <Publisher
-          publisher={this.props.publisher}
-          onChange={(e) => {
-            e.preventDefault()
-            onChangePublisher(e.target.value)
-            console.log("test select: ", e.target.value)
-          }}
+          publisher={publisher}
+          onChangePublisher={this.props.onChangePublisher}
         />
         <Publication
-          publication={this.props.publication}
-          onChange={(e) => {
-            e.preventDefault()
-            onChangePublication(e.target.value)
-            console.log("test select: ", e.target.value)
-          }}
+          publication={publication}
+          onChangePublication={onChangePublication}
         />
         <Sponsorship
-          sponsorship={this.props.sponsorship}
-            onChange={(e) => {
-              e.preventDefault()
-              onChangeSponsorship(e.target.value)
-              console.log("test select: ", e.target.value)
-            }}
+          sponsorship={sponsorship}
+            onChangeSponsorship={onChangeSponsorship}
         />
         <Reach/>
         <Cost
-          onChange={(e) => {
-            onChangeCost(e.target.value)
-            console.log("test input: ", e.target.value)
-          }}
+          cost={cost}
+          onChangeCost={onChangeCost}
         />
         <PublishDate
-          publishDate={this.props.publishDate}
-          onChange={(e) => {
-            e.preventDefault()
-            onChangePublishDate(e.target.value)
-            console.log("test input: ", e.target.value)
-          }}
+          onChangePublishDate={onChangePublishDate}
         />
         <DateAdded />
         <input type="submit" value="Submit" />
@@ -107,25 +87,25 @@ let input;
   }
 }
 
-
-
-const mapStateToProps = (state) => ({
-  cost: state.cost,
-  publisher: state.publisher,
-  publication: state.publication,
-  sponsorship: state.sponsorship,
-  publishDate: state.publishDate,
-})
+const mapStateToProps = (state) => {
+  return {
+    cost: state.cost,
+    publisher: state.publisher,
+    publication: state.publication,
+    sponsorship: state.sponsorship,
+    publishDate: state.publishDate,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChangeCost: (cost) => dispatch(changeCost(cost)),
-    onChangePublisher: (publisher) => dispatch(changePublisher(publisher)),
-    onChangePublication: (publication) => dispatch(changePublication(publication)),
-    onChangeSponsorship: (sponsorship) => dispatch(changeSponsorship(sponsorship)),
-    onChangePublishDate: (publishDate) => dispatch(changePublishDate(publishDate)),
+    onChangeCost: (e) => dispatch(changeCost(e.target.value)),
+    onChangePublisher: (e) => dispatch(changePublisher(e.target.value)),
+    onChangePublication: (e) => dispatch(changePublication(e.target.value)),
+    onChangeSponsorship: (e) => dispatch(changeSponsorship(e.target.value)),
+    onChangePublishDate: (e) => dispatch(changePublishDate(e.target.value)),
     dispatch,
-  }
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsletterForm);

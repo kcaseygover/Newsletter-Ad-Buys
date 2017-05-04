@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import data from '../../data';
 
-
-const Publication = ({ onChange, publication }) => {
+const Publication = (props) => {
 
   const phpPublications = Object.keys(data.Publishers['PHP Weekly'].Publication);
   const mappedPhpPublications = phpPublications.map(publication =>
@@ -24,15 +25,22 @@ const Publication = ({ onChange, publication }) => {
       <label htmlFor="publication" >Publication: </label>
       <select
         name="publication"
-        onChange={onChange}
+        onChange={props.onChangePublication}
         >
         <option defaultValue >Select...</option>
         {
-          mappedPhpPublications || mappedLaravelNewsPublications || mappedCooperpressPublications
+          mappedPhpPublications ||
+          mappedLaravelNewsPublications ||
+          mappedCooperpressPublications
         }
       </select>
     </div>
   )
+}
+
+Publication.propTypes = {
+  onChangePublication: PropTypes.func.isRequired,
+  publication: PropTypes.string,
 }
 
 export default Publication;

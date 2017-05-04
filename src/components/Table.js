@@ -1,10 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Table = () => {
-  console.log('in table:')
+
+const Table = (props) => {
+  console.log('in table:', props)
 
   return (
-    <tbody></tbody>
+    <tbody>
+      <tr>
+        <th>{props.publisher}</th>
+        <th>{props.publication}</th>
+        <th>{props.sponsorship}</th>
+        <th>{props.publishDate}</th>
+        <th>{props.cost}</th>
+      </tr>
+    </tbody>
   )
 }
 

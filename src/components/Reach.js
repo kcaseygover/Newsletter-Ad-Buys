@@ -1,4 +1,5 @@
 import React from 'react';
+
 import data from '../../data';
 
 const phpWeeklyReach = data.Publishers['PHP Weekly'].Publication['PHP Weekly'].Reach;
@@ -12,7 +13,7 @@ const Reach = () => (
     <label htmlFor="reach">Reach: </label>
     <input
       name="reach"
-      value="Unknown"
+      value={phpWeeklyReach || laravelNewsReach || dbWeeklyReach || nodeWeeklyReach || pgWeeklyReach}
       readOnly
     />
   </div>

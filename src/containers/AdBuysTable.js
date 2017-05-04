@@ -6,6 +6,7 @@ import Table from '../components/Table.js';
 
 class AdBuysTable extends React.PureComponent {
   render() {
+    console.log('intable container: ', this.props)
     return (
 
       <table>
@@ -18,11 +19,33 @@ class AdBuysTable extends React.PureComponent {
             <th>Cost</th>
           </tr>
         </thead>
-        <Table />
+        <Table
+          publisher={this.props.publisher}
+          publication={this.props.publication}
+          sponsorship={this.props.sponsorship}
+          publishDate={this.props.publishDate}
+          cost={this.props.cost}
+        />
       </table>
 
     )
   }
 }
 
-export default connect(null, null)(AdBuysTable);
+const mapStateToProps = (state) => {
+  return {
+    cost: state.cost,
+    publisher: state.publisher,
+    publication: state.publication,
+    sponsorship: state.sponsorship,
+    publishDate: state.publishDate,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  };
+};
+
+export default connect(mapStateToProps, null)(AdBuysTable);

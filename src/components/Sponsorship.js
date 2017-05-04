@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import data from '../../data';
 
-const Sponsorship = ({ onChange }) => {
+const Sponsorship = (props) => {
 
   const phpSponsorships = data.Publishers['PHP Weekly'].Publication['PHP Weekly'].Sponsorship;
 
@@ -23,20 +25,24 @@ const Sponsorship = ({ onChange }) => {
       <label htmlFor="sponsorship">Sponsorship: </label>
       <select
         name="sponsorship"
-        onChange={onChange}
+        onChange={props.onChangeSponsorship}
         >
         <option defaultValue >Select...</option>
         {
-          publication === 'PHP Weekly' ? <option value={sponsorship}>{phpSponsorships}</option> :
-          publication === 'Laravel News' ? <option value={sponsorship}>{laravelNewsSponsorships}</option> :
-          publication === 'DB Weekly' ? {mappedDbWeeklySponsorships} :
-          publication === 'Node Weekly' ? {mappedNodeWeeklySponsorships} :
-          publication === 'Postgres Weekly' ? {mappedPgWeeklySponsorships} :
-          <option></option>
+          <option>{phpSponsorships}</option> ||
+          <option>{laravelNewsSponsorships}</option> ||
+          mappedDbWeeklySponsorships ||
+          mappedNodeWeeklySponsorships ||
+          mappedPgWeeklySponsorships
         }
       </select>
     </div>
   )
+}
+
+Sponsorship.propTypes = {
+  onChangeSponsorship: PropTypes.func.isRequired,
+  sponsorship: PropTypes.string,
 }
 
 export default Sponsorship;

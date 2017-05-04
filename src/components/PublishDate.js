@@ -1,17 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const PublishDate = ({ onChange }) => {
-  console.log('in date  ', onChange)
+const PublishDate = (props) => {
+  console.log('in date  ', props.onChangePublishDate)
   return (
     <div>
       <label htmlFor="publishDate">Date Published: </label>
       <input
         type="date"
         name="publishDate"
-        onChange={onChange}
+        onChange={props.onChangePublishDate}
       />
     </div>
   )
+}
+
+PublishDate.propTypes = {
+  onChangePublishDate: PropTypes.func.isRequired,
 }
 
 export default PublishDate;
