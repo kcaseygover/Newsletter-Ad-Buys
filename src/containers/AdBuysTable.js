@@ -19,13 +19,19 @@ class AdBuysTable extends React.PureComponent {
             <th>Cost</th>
           </tr>
         </thead>
-        <Table
-          publisher={this.props.publisher}
-          publication={this.props.publication}
-          sponsorship={this.props.sponsorship}
-          publishDate={this.props.publishDate}
-          cost={this.props.cost}
-        />
+        <tbody>
+
+
+          <Table
+            publisher={this.props.publisher}
+            publication={this.props.publication}
+            sponsorship={this.props.sponsorship}
+            publishDate={this.props.publishDate}
+            cost={this.props.cost}
+            
+          />
+
+        </tbody>
       </table>
 
     )

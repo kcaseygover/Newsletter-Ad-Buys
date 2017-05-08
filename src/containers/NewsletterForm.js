@@ -65,6 +65,7 @@ let input;
           onChangePublisher={this.props.onChangePublisher}
         />
         <Publication
+          publisher={publisher}
           publication={publication}
           onChangePublication={onChangePublication}
         />

@@ -14,13 +14,10 @@
     "babel-polyfill": "^6.23.0",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
-    "react-bootstrap": "^0.30.9",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-select": "^1.0.0-rc.3",
-    "react-widgets": "^3.4.6",
     "redux": "^3.6.0",
     "redux-saga": "^0.14.6"
   },

@@ -48,13 +48,13 @@ function appReducer(state = initialState, action) {
         ...state,
         cost: action.cost
       }
-
     case 'SAVE_AD_BUY':
       return {
         ...state,
         saveAd: true
       }
-
+    case 'DELETE_ROW':
+      return {}
     default:
       return state;
   }
