@@ -9,7 +9,9 @@ import {
   changePublisher,
   changePublication,
   changeSponsorship,
+  changeReach,
   changePublishDate,
+  changeDateAdded,
 } from '../actions/index.js'
 
 import Publisher from '../components/Publisher.js';
@@ -42,27 +44,31 @@ class NewsletterForm extends React.PureComponent {
       onChangePublisher,
       onChangePublication,
       onChangeSponsorship,
+      onChangeReach,
       onChangePublishDate,
+      onChangeDateAdded,
       cost,
       publisher,
       publication,
       sponsorship,
+      reach,
+      dateAdded,
       dispatch
     } = this.props;
 
+let today = new Date();
 let input;
-
+console.log('dateAdded', this.props.dateAdded)
     return (
-      <form onSubmit={e => {
-              e.preventDefault()
-              dispatch(saveAdBuy())
-              console.log("test submit: ")
-
-            }}>
+      <form onSubmit={(e) => {
+        e.preventDefault()
+        dispatch(saveAdBuy())
+        console.log("test submit")
+      }}>
         <h1>Newsletter Ads Buy Tracking Form</h1>
         <Publisher
           publisher={publisher}
-          onChangePublisher={this.props.onChangePublisher}
+          onChangePublisher={onChangePublisher}
         />
         <Publication
           publisher={publisher}
@@ -71,9 +77,12 @@ let input;
         />
         <Sponsorship
           sponsorship={sponsorship}
-            onChangeSponsorship={onChangeSponsorship}
+          onChangeSponsorship={onChangeSponsorship}
         />
-        <Reach/>
+        <Reach
+          reach={reach}
+          onChangeReach={onChangeReach}
+        />
         <Cost
           cost={cost}
           onChangeCost={onChangeCost}
@@ -81,7 +90,10 @@ let input;
         <PublishDate
           onChangePublishDate={onChangePublishDate}
         />
-        <DateAdded />
+        <DateAdded
+          dateAdded={today}
+          onChangeDateAdded={onChangeDateAdded}
+        />
         <input type="submit" value="Submit" />
       </form>
     )
@@ -94,7 +106,9 @@ const mapStateToProps = (state) => {
     publisher: state.publisher,
     publication: state.publication,
     sponsorship: state.sponsorship,
+    reach: state.reach,
     publishDate: state.publishDate,
+    dateAdded: state.dateAdded,
   };
 };
 
@@ -103,8 +117,10 @@ const mapDispatchToProps = (dispatch) => {
     onChangeCost: (e) => dispatch(changeCost(e.target.value)),
     onChangePublisher: (e) => dispatch(changePublisher(e.target.value)),
     onChangePublication: (e) => dispatch(changePublication(e.target.value)),
+    onChangeReach: (e) => dispatch(changeReach(e.target.value)),
     onChangeSponsorship: (e) => dispatch(changeSponsorship(e.target.value)),
     onChangePublishDate: (e) => dispatch(changePublishDate(e.target.value)),
+    onChangeDateAdded: (e) => dispatch(changeDateAdded(e.target.value)),
     dispatch,
   };
 };

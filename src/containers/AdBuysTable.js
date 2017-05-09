@@ -7,6 +7,7 @@ import Table from '../components/Table.js';
 class AdBuysTable extends React.PureComponent {
   render() {
     console.log('intable container: ', this.props)
+
     return (
 
       <table>
@@ -15,20 +16,24 @@ class AdBuysTable extends React.PureComponent {
             <th>Publisher</th>
             <th>Publication</th>
             <th>Sponsorship</th>
-            <th>Publish Date</th>
+            <th>Reach</th>
             <th>Cost</th>
+            <th>Publish Date</th>
+            <th>Date Added</th>
           </tr>
         </thead>
         <tbody>
+
 
 
           <Table
             publisher={this.props.publisher}
             publication={this.props.publication}
             sponsorship={this.props.sponsorship}
-            publishDate={this.props.publishDate}
+            reach={this.props.reach}
             cost={this.props.cost}
-            
+            publishDate={this.props.publishDate}
+            dateAdded={this.props.dateAdded}
           />
 
         </tbody>
@@ -44,7 +49,9 @@ const mapStateToProps = (state) => {
     publisher: state.publisher,
     publication: state.publication,
     sponsorship: state.sponsorship,
+    reach: state.reach,
     publishDate: state.publishDate,
+    dateAdded: state.dateAdded,
   };
 };
 

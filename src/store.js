@@ -20,7 +20,7 @@ sagaMiddleware.run(mySaga);
 
 // Log the initial state
 console.log('log initial state, in store.js:', JSON.stringify(store.getState()), store.getState())
-
+console.log("persistedState", persistedState)
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
