@@ -9,7 +9,6 @@ const DateAdded = (props) => {
     <div>
       <label htmlFor="dateNow">Click to Add Date Added -> </label>
       <input
-
         name="dateNow"
         value={props.dateAdded}
         onClick={props.onChangeDateAdded}

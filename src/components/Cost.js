@@ -11,6 +11,7 @@ console.log('in Cost onChangeCost:', props.cost, props.onChangeCost)
       <input
         type="text"
         name="cost"
+        value={props.cost}
         onChange={props.onChangeCost}
       />
     </div>

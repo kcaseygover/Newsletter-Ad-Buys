@@ -11,6 +11,7 @@ const Reach = (props) => {
     <div>
       <label htmlFor="reach">Reach: </label>
         <select
+          value={props.reach}
           name="reach"
           onChange={props.onChangeReach}>
           <option defaultValue >Select...</option>

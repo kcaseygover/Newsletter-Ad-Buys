@@ -6,9 +6,10 @@ const CHANGE_REACH = 'CHANGE_REACH';
 const CHANGE_PUBLISH_DATE = 'CHANGE_PUBLISH_DATE';
 const CHANGE_DATE_ADDED = 'CHANGE_DATE_ADDED';
 const SAVE_AD_BUY = 'SAVE_AD_BUY';
+const SAVE_AD_BUY_SUCCESS = 'SAVE_AD_BUY_SUCCESS';
+const SAVE_AD_BUY_ERROR = 'SAVE_AD_BUY_ERROR';
 const DELETE_ROW = 'DELETE_ROW';
 
-let nextAd = 0;
 
 export function changePublisher(publisher) {
   return {
@@ -16,7 +17,6 @@ export function changePublisher(publisher) {
     publisher,
   }
 }
-
 
 export function changePublication(publication) {
   return {
@@ -63,7 +63,18 @@ export function changeDateAdded(dateAdded) {
 export function saveAdBuy() {
   return {
     type: SAVE_AD_BUY,
-    id: nextAd++,
+  }
+}
+export function saveAdBuyError(error) {
+  return {
+    type: SAVE_AD_BUY_ERROR,
+    error,
+  }
+}
+
+export function saveAdBuySuccess() {
+  return {
+    type: SAVE_AD_BUY_SUCCESS,
   }
 }
 

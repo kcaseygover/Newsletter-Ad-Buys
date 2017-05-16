@@ -7,6 +7,7 @@ const PublishDate = (props) => {
     <div>
       <label htmlFor="publishDate">Date Published: </label>
       <input
+        value={props.publishDate}
         type="date"
         name="publishDate"
         onChange={props.onChangePublishDate}
@@ -17,6 +18,7 @@ const PublishDate = (props) => {
 
 PublishDate.propTypes = {
   onChangePublishDate: PropTypes.func.isRequired,
+  publishDate: PropTypes.any,
 }
 
 export default PublishDate;

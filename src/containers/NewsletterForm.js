@@ -52,12 +52,13 @@ class NewsletterForm extends React.PureComponent {
       publication,
       sponsorship,
       reach,
+      publishDate,
       dateAdded,
       dispatch
     } = this.props;
 
 let today = new Date();
-let input;
+
 console.log('dateAdded', this.props.dateAdded)
     return (
       <form onSubmit={(e) => {
@@ -76,11 +77,15 @@ console.log('dateAdded', this.props.dateAdded)
           onChangePublication={onChangePublication}
         />
         <Sponsorship
+          publisher={publisher}
+          publication={publication}
           sponsorship={sponsorship}
           onChangeSponsorship={onChangeSponsorship}
         />
         <Reach
           reach={reach}
+          publisher={publisher}
+          publication={publication}
           onChangeReach={onChangeReach}
         />
         <Cost
@@ -88,6 +93,7 @@ console.log('dateAdded', this.props.dateAdded)
           onChangeCost={onChangeCost}
         />
         <PublishDate
+          publishDate={publishDate}
           onChangePublishDate={onChangePublishDate}
         />
         <DateAdded

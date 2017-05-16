@@ -12,6 +12,7 @@ const Publisher = (props) => {
     <div>
       <label htmlFor="publisher">Publisher: </label>
       <select
+        value={props.publisher}
         name="publisher"
         onChange={props.onChangePublisher}>
         <option defaultValue >Select...</option>

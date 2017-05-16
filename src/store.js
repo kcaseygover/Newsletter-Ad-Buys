@@ -7,28 +7,29 @@ import mySaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const persistedState = loadState();
+// const persistedState = loadState();
 
 const store = createStore(
   appReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(sagaMiddleware),
-  persistedState,
+  // persistedState,
 );
 
 sagaMiddleware.run(mySaga);
 
 // Log the initial state
-console.log('log initial state, in store.js:', JSON.stringify(store.getState()), store.getState())
-console.log("persistedState", persistedState)
+console.log('log initial state, in store.js:', JSON.stringify(store.getState().publisher), store.getState())
+// console.log("persistedState", persistedState)
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 // const unsubscribe =
 store.subscribe(() =>
-
-  // console.log('in store.js, state change? ', store.getState())
-  saveState(store.getState())
+{
+  console.log('in store.js, state change? ', store.getState())
+  // saveState(store.getState())
+}
   // localStorage.setItem('reduxState', JSON.stringify(store.getState()))
 )
 

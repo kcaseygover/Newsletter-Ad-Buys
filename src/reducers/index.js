@@ -7,16 +7,20 @@ import {
   CHANGE_PUBLISH_DATE,
   CHANGE_DATE_ADDED,
   SAVE_AD_BUY,
+  SAVE_AD_BUY_SUCCESS,
+  SAVE_AD_BUY_ERROR,
 } from '../actions/index.js';
 
 const initialState = {
-  publisher: 'test',
-  publication: 'test',
-  sponsorship: 'test',
-  reach: 'test',
-  cost: 'test',
-  publishDate: 'test',
-  dateAdded: 'test',
+  publisher: '',
+  publication: '',
+  sponsorship: '',
+  reach: '',
+  cost: '',
+  publishDate: '',
+  dateAdded: '',
+  loading: false,
+  error: false,
 };
 
 
@@ -61,13 +65,24 @@ function appReducer(state = initialState, action) {
     case 'SAVE_AD_BUY':
       return {
         ...state,
-        // publisher: '',
-        // publication: '',
-        // sponsorship: '',
-        // reach: '',
-        // cost: '',
-        // publishDate: '',
-        // dateAdded: '',
+        loading: true
+      }
+    case 'SAVE_AD_BUY_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        publisher: '',
+        publication: '',
+        sponsorship: '',
+        reach: '',
+        cost: '',
+        publishDate: '',
+        dateAdded: '',
+      }
+    case 'SAVE_AD_BUY_ERROR':
+      return {
+        ...state,
+        error: action.error
       }
     case 'DELETE_ROW':
       return {}

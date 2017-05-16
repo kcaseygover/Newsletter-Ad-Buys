@@ -10,6 +10,7 @@ const Publication = (props) => {
     <div>
       <label htmlFor="publication" >Publication: </label>
       <select
+        value={props.publication}
         name="publication"
         onChange={props.onChangePublication}
         >

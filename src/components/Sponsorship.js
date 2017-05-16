@@ -12,6 +12,7 @@ const publication = props.publication;
     <div>
       <label htmlFor="sponsorship">Sponsorship: </label>
       <select
+        value={props.sponsorship}
         name="sponsorship"
         onChange={props.onChangeSponsorship}
         >
