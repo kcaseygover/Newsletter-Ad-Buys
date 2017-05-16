@@ -5,7 +5,7 @@ const data = {
     'PHP Weekly': {
       'Publication': {
           'PHP Weekly': {
-          'Sponsorship': 'Primary Sponsorship',
+          'Sponsorship': ['Primary Sponsorship'],
           'Reach': 'Unknown',
           }
         },
@@ -13,7 +13,7 @@ const data = {
     'Laravel News': {
       'Publication': {
           'Laravel News': {
-          'Sponsorship': 'Primary Sponsorship',
+          'Sponsorship': ['Primary Sponsorship'],
           'Reach': '20,000',
           }
         },
