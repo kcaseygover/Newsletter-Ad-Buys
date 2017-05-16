@@ -5,20 +5,8 @@ import data from '../../data';
 
 const Sponsorship = (props) => {
 
-  const phpSponsorships = data.Publishers['PHP Weekly'].Publication['PHP Weekly'].Sponsorship;
-
-  const laravelNewsSponsorships = data.Publishers['Laravel News'].Publication['Laravel News'].Sponsorship;
-
-  const dbWeeklySponsorships = data.Publishers['Cooperpress'].Publication['DB Weekly'].Sponsorship;
-  const mappedDbWeeklySponsorships = dbWeeklySponsorships.map(sponsorship => <option key={sponsorship.toString()}>{sponsorship}</option>)
-
-  const nodeWeeklySponsorships = data.Publishers['Cooperpress'].Publication['Node Weekly'].Sponsorship;
-  const mappedNodeWeeklySponsorships = nodeWeeklySponsorships.map(sponsorship => <option key={sponsorship.toString()}>{sponsorship}</option>)
-
-  const pgWeeklySponsorships = data.Publishers['Cooperpress'].Publication['Postgres Weekly'].Sponsorship;
-  const mappedPgWeeklySponsorships = pgWeeklySponsorships.map(sponsorship => <option key={sponsorship.toString()}>{sponsorship}</option>)
-
-  let publication;
+const publisher = props.publisher;
+const publication = props.publication;
 
   return (
     <div>
@@ -28,12 +16,10 @@ const Sponsorship = (props) => {
         onChange={props.onChangeSponsorship}
         >
         <option defaultValue >Select...</option>
-        {
-          <option>{phpSponsorships}</option> ||
-          <option>{laravelNewsSponsorships}</option> ||
-          mappedDbWeeklySponsorships ||
-          mappedNodeWeeklySponsorships ||
-          mappedPgWeeklySponsorships
+        { publisher && publication ?
+          data.Publishers[publisher].Publication[publication].Sponsorship.map(sponsorship =>
+            <option key={sponsorship.toString()}>{sponsorship}</option>)
+          : null
         }
       </select>
     </div>
