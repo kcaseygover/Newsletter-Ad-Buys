@@ -25,7 +25,6 @@ const initialState = {
 
 
 function appReducer(state = initialState, action) {
-  console.log('state in reducers: ', state, 'action in reducers', action);
   switch (action.type) {
     case 'CHANGE_PUBLISHER':
       return {

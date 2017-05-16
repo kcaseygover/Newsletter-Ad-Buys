@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PublishDate = (props) => {
-  console.log('in date  ', props.onChangePublishDate)
   return (
     <div>
       <label htmlFor="publishDate">Date Published: </label>

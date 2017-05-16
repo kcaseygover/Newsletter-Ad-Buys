@@ -7,17 +7,12 @@ import {
   Link
 } from 'react-router-dom';
 
-import store from '../../store';
 import NewsletterForm from '../../containers/NewsletterForm.js';
 import AdBuysTable from '../../containers/AdBuysTable.js';
 
 export default class App extends Component {
 
   render() {
-    console.log('app container index', this.props, this)
-    store.subscribe(() => {
-      console.log('get state in app container', store.getState());
-    });
     return (
       <Router>
         <div>

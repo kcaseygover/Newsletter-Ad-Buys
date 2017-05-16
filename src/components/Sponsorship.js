@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import data from '../../data';
 
 const Sponsorship = (props) => {
-
-const publisher = props.publisher;
-const publication = props.publication;
+  const publisher = props.publisher;
+  const publication = props.publication;
 
   return (
     <div>

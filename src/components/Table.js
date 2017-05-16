@@ -5,14 +5,14 @@ import DeleteButton from './DeleteButton.js';
 
 const Table = (props) => {
   console.log('in table:', props)
-  console.log('in table, get items',JSON.parse(localStorage.getItem('state')), localStorage.getItem('state'));
+  console.log('in table, get items',JSON.parse(localStorage.getItem('ad')), localStorage.getItem('ad'));
 const items = [];
 // items.push(JSON.parse(localStorage.getItem('state')));
-let Obj = JSON.parse(localStorage.getItem('state'));
+let Obj = JSON.parse(localStorage.getItem('ad'));
 for(let key in Obj) {
   items.push(Obj[key])
 }
-console.log("items", items, JSON.parse(localStorage.getItem('state')))
+console.log("items", items, JSON.parse(localStorage.getItem('ad')))
 {/* <tr>
   {items.map(item => <th key={item.toString()}>{item}</th>
 

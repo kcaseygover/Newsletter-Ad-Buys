@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 import data from '../../data';
 
 const Publisher = (props) => {
-  console.log('in publisher; publisher: ', props.publisher, 'onChange:', props.onChangePublisher)
-
   const publishers = Object.keys(data.Publishers);
-
   return (
     <div>
       <label htmlFor="publisher">Publisher: </label>

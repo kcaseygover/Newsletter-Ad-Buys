@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-import store from '../store';
 
 import {
   saveAdBuy,
@@ -23,22 +22,7 @@ import Reach from '../components/Reach.js';
 import Sponsorship from '../components/Sponsorship.js';
 
 class NewsletterForm extends React.PureComponent {
-  // static propTypes = {
-  //   dispatch: PropTypes.func,
-  //   onChangeCost: PropTypes.func,
-  //   onChangePublisher: PropTypes.func,
-  //   onChangePublishDate: PropTypes.func,
-  //   cost: PropTypes.string,
-  //   publisher: PropTypes.string,
-  // };
-
   render() {
-// console.log(store.getState());
-// console.log("test input: ", e.target.value)
-    console.log('this.props in Newsletterform?', this.props.cost, this.props.onChangeCost);
-    store.subscribe(() => {
-      console.log('get state in newsletter form container', store.getState());
-    });
     const {
       onChangeCost,
       onChangePublisher,
@@ -59,12 +43,10 @@ class NewsletterForm extends React.PureComponent {
 
 let today = new Date();
 
-console.log('dateAdded', this.props.dateAdded)
     return (
       <form onSubmit={(e) => {
         e.preventDefault()
         dispatch(saveAdBuy())
-        console.log("test submit")
       }}>
         <h1>Newsletter Ads Buy Tracking Form</h1>
         <Publisher
