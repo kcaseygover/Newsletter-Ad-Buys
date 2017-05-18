@@ -1,36 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { loadState } from '../../localStorage';
 import DeleteButton from './DeleteButton.js';
 
 const Table = (props) => {
-  console.log('in table:', props)
-  console.log('in table, get items',JSON.parse(localStorage.getItem('ad')), localStorage.getItem('ad'));
-const items = [];
-// items.push(JSON.parse(localStorage.getItem('state')));
-let Obj = JSON.parse(localStorage.getItem('ad'));
-for(let key in Obj) {
-  items.push(Obj[key])
-}
-console.log("items", items, JSON.parse(localStorage.getItem('ad')))
-{/* <tr>
-  {items.map(item => <th key={item.toString()}>{item}</th>
+  console.log('props in table', props)
 
-)}
-</tr> */}
+console.log('loadState',loadState())
+let rows = loadState();
+console.log('rows', rows)
+rows.map(row => {
+  console.log('row', row, 'row.publisher', row.publisher)
+})
   return (
-
-      <tr>
-        <th>{props.publisher}</th>
-        <th>{props.publication}</th>
-        <th>{props.sponsorship}</th>
-        <th>{props.reach}</th>
-        <th>{props.publishDate}</th>
-        <th>{props.cost}</th>
-        <th>{props.dateAdded}</th>
-        <th><DeleteButton /></th>
-      </tr>
-
+    <tbody>
+      { rows.map((row, index) =>
+        <tr key={index}>
+          <td>{row.publisher}</td>
+          <td>{row.publication}</td>
+          <td>{row.sponsorship}</td>
+          <td>{row.reach}</td>
+          <td>{row.cost}</td>
+          <td>{row.publishDate}</td>
+          <td>{row.dateAdded}</td>
+          <td><DeleteButton /></td>
+        </tr>
+      )}
+    </tbody>
   )
 }
 

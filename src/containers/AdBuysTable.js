@@ -9,7 +9,6 @@ class AdBuysTable extends React.PureComponent {
     console.log('intable container: ', this.props)
 
     return (
-
       <table>
         <thead>
           <tr>
@@ -22,23 +21,8 @@ class AdBuysTable extends React.PureComponent {
             <th>Date Added</th>
           </tr>
         </thead>
-        <tbody>
-
-
-
-          <Table
-            publisher={this.props.publisher}
-            publication={this.props.publication}
-            sponsorship={this.props.sponsorship}
-            reach={this.props.reach}
-            cost={this.props.cost}
-            publishDate={this.props.publishDate}
-            dateAdded={this.props.dateAdded}
-          />
-
-        </tbody>
+        <Table />
       </table>
-
     )
   }
 }
