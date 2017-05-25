@@ -5,7 +5,6 @@ import data from '../../data';
 
 const Publication = (props) => {
   const publisher = props.publisher;
-
   return (
     <div>
       <label htmlFor="publication" >Publication: </label>

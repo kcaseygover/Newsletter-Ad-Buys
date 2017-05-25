@@ -1,6 +1,14 @@
-import { call, put, take, fork, cancel } from 'redux-saga/effects';
+import { call, put, take, fork, cancel, takeEvery } from 'redux-saga/effects';
 
-import { saveAdBuyError, saveAdBuySuccess } from './actions/index';
+import {
+  saveAdBuyError,
+  saveAdBuySuccess,
+  deleteRowSuccess,
+  deleteRowError,
+  clearTableSuccess,
+  clearTableError
+} from './actions/index';
+
 import { saveState, loadState } from '../localStorage.js';
 import store from './store';
 
@@ -8,22 +16,64 @@ export function* attemptSaveAd() {
   try {
     console.log('in saga attemptSaveAd', 'getState??', store.getState())
     yield saveState(store.getState())
-    // yield loadState(store.getState())
     yield put(saveAdBuySuccess())
   } catch (e) {
     yield put(saveAdBuyError(e))
   }
 }
 
+export function* attemptDeleteRow(action) {
+  try {
+    // yield saveState(store.getState())
+    yield put(deleteRowSuccess())
+  } catch (e) {
+    yield put(deleteRowError(e))
+  }
+}
+
+export function* attemptClearTable() {
+
+  console.log('attemptclearTable saga')
+  try {
+    yield localStorage.removeItem('ad');
+    yield put(clearTableSuccess());
+
+
+  } catch (e) {
+    yield put(clearTableError(e));
+  }
+}
+
 export function* saveAdWatcher() {
-  console.log('in saga watcher')
+  console.log('in saga save watcher')
   while (yield take('SAVE_AD_BUY')) {
     yield call(attemptSaveAd)
   }
 }
 
+export function* deleteRowWatcher() {
+  console.log('in delete watcher')
+  while (yield take('DELETE_ROW')) {
+    yield call(attemptDeleteRow)
+  }
+}
+
+export function* clearTableWatcher() {
+  console.log('in clearTable watcher')
+  while (yield take('CLEAR_TABLE')) {
+    yield call(attemptClearTable)
+  }
+}
+
 export default function* mySaga() {
   console.log('Hello Sagas!')
-  const watcher = yield fork(saveAdWatcher);
-  yield take('SAVE_AD_BUY_SUCCESS');
+  yield [
+    fork(saveAdWatcher),
+    fork(deleteRowWatcher),
+    fork(clearTableWatcher),
+  ];
+  // yield take('SAVE_AD_BUY_SUCCESS');
+  // const watcherDeleteRow = yield fork(deleteRowWatcher);
+  // yield take('DELETE_ROW_SUCCESS')
+
 }

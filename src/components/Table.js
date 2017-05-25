@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { loadState } from '../../localStorage';
-import DeleteButton from './DeleteButton.js';
+import store from '../store'
+import DeleteRowButton from './DeleteRowButton.js';
 
 const Table = (props) => {
-  console.log('props in table', props)
-
-console.log('loadState',loadState())
-let rows = loadState();
-console.log('rows', rows)
-rows.map(row => {
-  console.log('row', row, 'row.publisher', row.publisher)
-})
+  const rows = props.rows;
+  console.log('rows in Table component', rows);
   return (
     <tbody>
       { rows.map((row, index) =>
@@ -23,11 +18,21 @@ rows.map(row => {
           <td>{row.cost}</td>
           <td>{row.publishDate}</td>
           <td>{row.dateAdded}</td>
-          <td><DeleteButton /></td>
+          <td>
+            <DeleteRowButton
+              dateAdded={row.dateAdded}
+              onDeleteRow={props.onDeleteRow}
+            />
+          </td>
         </tr>
       )}
     </tbody>
   )
+}
+
+Table.propTypes = {
+  onDeleteRow: PropTypes.any,
+  dateAdded: PropTypes.any,
 }
 
 export default Table;

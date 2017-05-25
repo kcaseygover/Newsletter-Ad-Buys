@@ -1,48 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
+import { saveState, loadState } from '../../localStorage';
+import store from '../store'
+import { deleteRow, clearTable } from '../actions/index.js';
 import Table from '../components/Table.js';
+import ClearTableButton from '../components/ClearTableButton';
 
 class AdBuysTable extends React.PureComponent {
-  render() {
-    console.log('intable container: ', this.props)
 
+  render() {
+
+    console.log('intable container: ', this.props)
+    let rows = loadState();
+    console.log('rows in getstate',rows)
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Publisher</th>
-            <th>Publication</th>
-            <th>Sponsorship</th>
-            <th>Reach</th>
-            <th>Cost</th>
-            <th>Publish Date</th>
-            <th>Date Added</th>
-          </tr>
-        </thead>
-        <Table />
-      </table>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Publisher</th>
+              <th>Publication</th>
+              <th>Sponsorship</th>
+              <th>Reach</th>
+              <th>Cost</th>
+              <th>Publish Date</th>
+              <th>Date Added</th>
+            </tr>
+          </thead>
+          <Table
+            rows={rows}
+            onDeleteRow={this.props.onDeleteRow}
+          />
+        </table>
+        <ClearTableButton
+          onClearTable={this.props.onClearTable}>
+          Clear Table
+        </ClearTableButton>
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    cost: state.cost,
-    publisher: state.publisher,
-    publication: state.publication,
-    sponsorship: state.sponsorship,
-    reach: state.reach,
-    publishDate: state.publishDate,
     dateAdded: state.dateAdded,
+    rows: store.getState(),
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    onDeleteRow: (dateAdded) => dispatch(deleteRow(dateAdded)),
+    onClearTable: () => dispatch(clearTable()),
+    dispatch,
   };
 };
 
-export default connect(mapStateToProps, null)(AdBuysTable);
+export default connect(mapStateToProps, mapDispatchToProps)(AdBuysTable);

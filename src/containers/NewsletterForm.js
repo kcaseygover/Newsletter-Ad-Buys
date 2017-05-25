@@ -42,7 +42,7 @@ class NewsletterForm extends React.PureComponent {
     } = this.props;
 
 let today = new Date();
-
+console.log('in form container', this.props)
     return (
       <form onSubmit={(e) => {
         e.preventDefault()

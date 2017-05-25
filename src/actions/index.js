@@ -9,7 +9,11 @@ const SAVE_AD_BUY = 'SAVE_AD_BUY';
 const SAVE_AD_BUY_SUCCESS = 'SAVE_AD_BUY_SUCCESS';
 const SAVE_AD_BUY_ERROR = 'SAVE_AD_BUY_ERROR';
 const DELETE_ROW = 'DELETE_ROW';
-
+const DELETE_ROW_SUCCESS = 'DELETE_ROW_SUCCESS';
+const DELETE_ROW_ERROR = 'DELETE_ROW_ERROR';
+const CLEAR_TABLE = 'CLEAR_TABLE';
+const CLEAR_TABLE_SUCCESS = 'CLEAR_TABLE_SUCCESS';
+const CLEAR_TABLE_ERROR = 'CLEAR_TABLE_ERROR';
 
 export function changePublisher(publisher) {
   return {
@@ -78,8 +82,38 @@ export function saveAdBuySuccess() {
   }
 }
 
-export function deleteRow() {
+export function deleteRow(dateAdded) {
+  console.log('args', arguments)
   return {
     type: DELETE_ROW,
+    dateAdded,
+  }
+}
+
+export function deleteRowSuccess() {
+  return {
+    type: DELETE_ROW_SUCCESS,
+  }
+}
+export function deleteRowError(error) {
+  return {
+    type: DELETE_ROW_ERROR,
+    error,
+  }
+}
+export function clearTable() {
+  return {
+    type: CLEAR_TABLE,
+  }
+}
+export function clearTableSuccess() {
+  return {
+    type: CLEAR_TABLE_SUCCESS
+  }
+}
+export function clearTableError(error) {
+  return {
+    type: CLEAR_TABLE_ERROR,
+    error,
   }
 }
