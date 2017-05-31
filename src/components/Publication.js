@@ -7,12 +7,11 @@ const Publication = (props) => {
   const publisher = props.publisher;
   return (
     <div>
-      <label htmlFor="publication" >Publication: </label>
+      <label htmlFor="publication" >Publication:</label>
       <select
         value={props.publication}
         name="publication"
-        onChange={props.onChangePublication}
-        >
+        onChange={props.onChangePublication}>
         <option defaultValue >Select...</option>
         { publisher ?
           (Object.keys(data.Publishers[publisher].Publication)).map(publication =>

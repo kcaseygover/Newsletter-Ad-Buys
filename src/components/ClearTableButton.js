@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const ClearTableButton = (props) => {
   return (
     <button
-      onClick={props.onClearTable}
-      >Clear Table</button>
+      onClick={props.onClearTable}>Clear Table
+    </button>
   )
 }
 

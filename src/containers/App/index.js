@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  BrowserRouter,
-  BrowserRouter as Router,
   Route,
   Link,
-  Redirect,
   HashRouter
 } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
+
 import NewsletterForm from '../../containers/NewsletterForm.js';
 import AdBuysTable from '../../containers/AdBuysTable.js';
 
@@ -37,7 +35,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <BrowserRouter >
+      <HashRouter history={history}>
       <div>
         <ul>
           <li><Link to="/">Newsletter Form</Link></li>
@@ -46,7 +44,7 @@ export default class App extends Component {
         <Route exact path="/" component={NewsletterForm} />
         <Route path="/table" component={AdBuysTable}/>
       </div>
-    </BrowserRouter>
+    </HashRouter>
     );
   };
 

@@ -5,12 +5,13 @@ import PropTypes from 'prop-types';
 const DateAdded = (props) => {
   return (
     <div>
-      <label htmlFor="dateNow">Click to Add Date Added -> </label>
+      <label htmlFor="dateNow">Add Today's date. Click here -> </label>
       <input
         name="dateNow"
         value={props.dateAdded}
         onClick={props.onChangeDateAdded}
         readOnly
+        required
       />
     </div>
   )

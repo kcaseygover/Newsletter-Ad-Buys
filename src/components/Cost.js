@@ -6,6 +6,7 @@ const Cost = (props) => {
     <div>
       <label htmlFor="cost">Cost: $ </label>
       <input
+        required
         type="text"
         name="cost"
         value={props.cost}

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { loadState } from '../../localStorage';
 import store from '../store'
 import DeleteRowButton from './DeleteRowButton.js';
 
 const Table = (props) => {
   const rows = props.rows;
-  console.log('rows in Table component', rows);
   return (
     <tbody>
       { rows.map((row, index) =>

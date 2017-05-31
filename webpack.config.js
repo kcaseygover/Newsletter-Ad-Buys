@@ -10,9 +10,6 @@ const config = {
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: 'bundle.js',
-        // historyApiFallback: {
-        //   index: '/'
-        // }
     },
     module: {
         rules: [
