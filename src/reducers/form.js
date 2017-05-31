@@ -1,3 +1,4 @@
+import { loadState, saveState } from '../../localStorage';
 import {
   CHANGE_PUBLISHER,
   CHANGE_PUBLICATION,
@@ -17,8 +18,6 @@ import {
   CLEAR_TABLE_ERROR,
 } from '../actions/index.js';
 
-import store from '../store';
-
 const initialState = {
   publisher: '',
   publication: '',
@@ -29,10 +28,11 @@ const initialState = {
   dateAdded: '',
   loading: false,
   error: false,
+  ads: loadState(),
 };
 
 
-function appReducer(state = initialState, action) {
+function formReducer(state = initialState, action) {
 
   switch (action.type) {
     case 'CHANGE_PUBLISHER':
@@ -93,14 +93,14 @@ function appReducer(state = initialState, action) {
         error: action.error
       }
     case 'DELETE_ROW':
-      const rows = store.getState();
-      return rows.filter(row =>{
+    console.log('in delete row reducer', ads)
+      return ads.filter(row =>{
         console.log('inside filter', row.dateAdded, action.dateAdded)
-        row.dateAdded !== action.dateAdded
-        console.log('rows after delete', rows)
+        // row.dateAdded !== action.dateAdded
+        console.log('rows after delete', ads)
+        // saveState(state.ads)
       }
     )
-
     case 'DELETE_ROW_SUCCESS':
       return {
         ...state,
@@ -131,4 +131,4 @@ function appReducer(state = initialState, action) {
   }
 }
 
-export default appReducer;
+export default formReducer;

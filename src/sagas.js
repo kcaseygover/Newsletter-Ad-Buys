@@ -23,6 +23,16 @@ export function* attemptSaveAd() {
 }
 
 export function* attemptDeleteRow(action) {
+  // var rows = loadState();
+  // console.log('in del reducer', rows, action)
+  // for(var i = 0; i < rows.length; i++){
+  //   console.log('in loop', rows[i].dateAdded)
+    // if (rows[i].dateAdded === action.dateAdded){
+    //   rows.splice(rows, 1);
+    //   console.log('after splice', rows)
+    //   // saveState(rows);
+    // }
+  //}
   try {
     // yield saveState(store.getState())
     yield put(deleteRowSuccess())

@@ -9,6 +9,13 @@ import ClearTableButton from '../components/ClearTableButton';
 
 class AdBuysTable extends React.PureComponent {
 
+  componentWillReceiveProps(nextProps) {
+    // will be true
+    const locationChanged = nextProps.location !== this.props.location
+
+    // INCORRECT, will *always* be false because history is mutable.
+    // const locationChanged = nextProps.history.location !== this.props.history.location
+  }
   render() {
 
     console.log('intable container: ', this.props)
@@ -34,8 +41,7 @@ class AdBuysTable extends React.PureComponent {
           />
         </table>
         <ClearTableButton
-          onClearTable={this.props.onClearTable}>
-          Clear Table
+          onClearTable={this.props.onClearTable}>Clear Table
         </ClearTableButton>
       </div>
     )
